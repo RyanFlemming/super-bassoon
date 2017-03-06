@@ -159,26 +159,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Country.cs" />
+    <Compile Include="Migrations\201702240406571_init.cs" />
+    <Compile Include="Migrations\201702240406571_init.Designer.cs">
+      <DependentUpon>201702240406571_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702240426314_SeededDbWithStates.cs" />
+    <Compile Include="Migrations\201702240426314_SeededDbWithStates.Designer.cs">
+      <DependentUpon>201702240426314_SeededDbWithStates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\AddressRepo.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702101031382_init.cs" />
-    <Compile Include="Migrations\201702101031382_init.Designer.cs">
-      <DependentUpon>201702101031382_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702101039033_AddedCountriesAndStates.cs" />
-    <Compile Include="Migrations\201702101039033_AddedCountriesAndStates.Designer.cs">
-      <DependentUpon>201702101039033_AddedCountriesAndStates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IAddressRepo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="States.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="TaxCalcDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,9 +195,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram.cd" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -216,7 +224,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -237,6 +244,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -249,11 +257,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702101031382_init.resx">
-      <DependentUpon>201702101031382_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702240406571_init.resx">
+      <DependentUpon>201702240406571_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702101039033_AddedCountriesAndStates.resx">
-      <DependentUpon>201702101039033_AddedCountriesAndStates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702240426314_SeededDbWithStates.resx">
+      <DependentUpon>201702240426314_SeededDbWithStates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

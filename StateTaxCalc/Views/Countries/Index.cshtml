@@ -1,0 +1,63 @@
+﻿@model StateTaxCalc.Models.AddressModel
+@{
+    ViewBag.Title = "Countries and States";
+}
+
+@*Using a reference for jQuery, so we can use Ajax*@
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+
+@*
+    Making a background call to retrieve States based on Country Id
+
+    On success, it loops through each matching value and appends
+    them to the list
+
+    On failure, display a popup alert
+*@
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#CountryId").change(function () {
+            var selectedItem = $(this).val();
+            var ddlStates = $("#StateId");
+            var statesProgress = $("#loading-states");
+            statesProgress.show();
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.RouteUrl("GetStatesByCountryId"))",
+                data: { "countryId": selectedItem },
+                success: function (data) {
+                    ddlStates.html('');
+                    $.each(data, function (id, option) {
+                        ddlStates.append($('<option></option>').val(option.id).html(option.name
+                            + " - " + option.tax + "%"));
+             
+                    });
+                    statesProgress.hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Failed to retrieve states.');
+                    statesProgress.hide();
+                }
+            });
+        });
+    });
+</script>
+
+
+
+@*Using our AddressModel to populate Country DDL*@
+
+@Html.LabelFor(model => model.CountryId)
+@Html.DropDownListFor(model => model.CountryId, Model.AvailableCountries)
+
+<br />
+
+@*Again, using our AddressModel to populate our states*@
+
+<b>State with Tax Rate</b>
+@Html.DropDownListFor(model => model.StateId, Model.AvailableStates, "Waiting for selection...")
+<span id="loading-states" style="display: none;">Please wait..</span>

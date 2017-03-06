@@ -1,4 +1,5 @@
 ﻿using ERD;
+using ERD.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
