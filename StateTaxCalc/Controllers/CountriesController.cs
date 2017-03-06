@@ -58,20 +58,5 @@ namespace StateTaxCalc.Controllers
 						  }).ToList();
 			return Json(result, JsonRequestBehavior.AllowGet);
 		}
-
-		[AcceptVerbs(HttpVerbs.Get)]
-		public ActionResult GetTaxRate(string stateId)
-		{
-			if (string.IsNullOrEmpty(stateId))
-			{
-				throw new ArgumentNullException("stateId");
-			}
-			int id = 0;
-			bool isValid = Int32.TryParse(stateId, out id);
-			IList<Decimal> taxRate = _myRepo.GetStateTaxRate(id);
-			var result = taxRate;
-
-			return Json(result, JsonRequestBehavior.AllowGet);
-		}
     }
 }
